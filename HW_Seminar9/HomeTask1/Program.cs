@@ -8,19 +8,19 @@ int numberM = Convert.ToInt32(Console.ReadLine());
 System.Console.Write("Введите число N: ");
 int numberN = Convert.ToInt32(Console.ReadLine());
 
-string PrintNumbersFrom (int start, int end)
+string PrintNumbersFrom(int start, int end)
 {
     if (start == end && start < 0) return ("Натуральных чисел нет");
     if (start == end && start > 0) return start.ToString();
-    if (start > end) 
+    if (start < end)
     {
-         return (start + ", " + PrintNumbersFrom(start - 1, end));  
-    }  
-    else while (start < 0)
+        while (start < 0)
         {
-        start++;
+            start++;
         }
         return (start + ", " + PrintNumbersFrom(start + 1, end));
+    }
+    if (start > end && start > 0) return (start + ", " + PrintNumbersFrom(start - 1, end));
+    else return "0";
 }
-
 Console.WriteLine($"Натуральные числа от {numberM} до {numberN}: \"\"{PrintNumbersFrom(numberM, numberN)}\"\"");
